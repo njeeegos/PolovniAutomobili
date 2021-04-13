@@ -1,0 +1,131 @@
+﻿@model PolovniAutomobili_proba.Models.IndexAutomobiliViewModel
+@{
+    ViewData["Title"] = "Oglasi";
+}
+<div>
+    @Html.ActionLink("Dodaj oglas", "Create", "Automobili")
+</div>
+
+
+<br />
+
+<div class="col-md-3">
+    <form asp-controller="Automobili" asp-action="Pretrazi" method="post">
+        <h4>Pretraži oglase</h4>
+        <hr />
+        @*<div asp-validation-summary="All" class="text-danger"></div>*@
+        <div class="form-group">
+            <label asp-for="@Model.Automobil.Marka"></label>
+            <input asp-for="@Model.Automobil.Marka" class="form-control" />
+            <span asp-validation-for="@Model.Automobil.Marka" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Automobil.Model"></label>
+            <input asp-for="@Model.Automobil.Model" class="form-control" />
+            <span asp-validation-for="@Model.Automobil.Model" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Automobil.Lokacija"></label>
+            <input asp-for="@Model.Automobil.Lokacija" class="form-control" />
+            <span asp-validation-for="@Model.Automobil.Lokacija" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Automobil.Cena">Cena do (u €)</label>
+            <input asp-for="@Model.Automobil.Cena" value="0" class="form-control" />
+            <span asp-validation-for="@Model.Automobil.Cena" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Automobil.Godiste">Godiste od</label>
+            <input asp-for="@Model.Automobil.Godiste" value="0" class="form-control" />
+            <span asp-validation-for="@Model.Automobil.Godiste" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Automobil.Oznake">Karoserija</label>
+            <select asp-for="@Model.Automobil.Oznake[0]" class="form-control">
+                <option value=""></option>
+                <option value="limuzina">Limuzina</option>
+                <option value="kupe">Kupe</option>
+                <option value="hečbek">Hečbek</option>
+                <option value="karavan">Karavan</option>
+                <option value="džip">Džip</option>
+                <option value="kombi">Kombi</option>
+                <option value="kamion">Kamion</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Automobil.Oznake">Gorivo</label>
+            <select asp-for="@Model.Automobil.Oznake[1]" class="form-control">
+                <option value=""></option>
+                <option value="benzin">Benzin</option>
+                <option value="dizel">Dizel</option>
+                <option value="autogas">Autogas</option>
+                <option value="električni">Električni</option>
+                <option value="hibrid">Hibrid</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Pretraži</button>
+        </div>
+    </form>
+</div>
+
+<br />
+
+<h4 id="oglasi">Oglasi</h4>
+<hr>
+@if (Model.Automobili.Count() > 0)
+{
+    <div>
+        <table class="table table-bordered">
+            <tr class="table-success">
+                <th>
+                    Marka
+                </th>
+                <th>
+                    Model
+                </th>
+                <th>
+                    Godiste
+                </th>
+                <th>
+                    Lokacija
+                </th>
+                <th>
+                    Cena (€)
+                </th>
+                <th>
+                    Kontakt prodavca
+                </th>
+                <th>
+
+                </th>
+            </tr>
+            @foreach (var item in Model.Automobili)
+            {
+                <tr>
+                    <td>
+                        @item.Marka
+                    </td>
+                    <td>
+                        @item.Model
+                    </td>
+                    <td>
+                        @item.Godiste
+                    </td>
+                    <td>
+                        @item.Lokacija
+                    </td>
+                    <td>
+                        @item.Cena
+                    </td>
+                    <td>
+                        @item.Korisnik.KontaktTelefon
+                    </td>
+                    <td>
+                        @Html.ActionLink("Vidi detalje...", "Details", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}

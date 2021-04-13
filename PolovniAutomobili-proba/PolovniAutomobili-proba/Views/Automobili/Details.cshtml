@@ -1,0 +1,85 @@
+﻿@model PolovniAutomobili_proba.Models.Automobil
+@{
+    ViewData["Title"] = "Detalji o oglasu";
+}
+
+<h1>Detalji o oglasu</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Marka)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Marka)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Godiste)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Godiste)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cena)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cena)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Lokacija)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Lokacija)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Oznake)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var item in Model.Oznake)
+            {
+                @item
+                <label> </label>
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <h4>Informacije o prodavcu</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Korisnik.Ime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Korisnik.Ime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Korisnik.Prezime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Korisnik.Prezime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Korisnik.KontaktTelefon)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Korisnik.KontaktTelefon)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Korisnik.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Korisnik.Email)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-controller="Automobili" asp-action="Index">Vrati se nazad</a>
+</div>

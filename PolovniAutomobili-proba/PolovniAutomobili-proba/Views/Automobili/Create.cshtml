@@ -1,0 +1,71 @@
+﻿@model PolovniAutomobili_proba.Models.Automobil
+
+@{
+    ViewData["Title"] = "Dodaj oglas";
+}
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form asp-controller="Automobili" asp-action="Create" method="post">
+                <h4>Dodaj novi oglas</h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="@Model.Marka"></label>
+                    <input asp-for="@Model.Marka" class="form-control" />
+                    <span asp-validation-for="@Model.Marka" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Model"></label>
+                    <input asp-for="@Model.Model" class="form-control" />
+                    <span asp-validation-for="@Model.Model" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Lokacija"></label>
+                    <input asp-for="@Model.Lokacija" class="form-control" />
+                    <span asp-validation-for="@Model.Lokacija" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Cena">Cena u €</label>
+                    <input asp-for="@Model.Cena" class="form-control" />
+                    <span asp-validation-for="@Model.Cena" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Godiste"></label>
+                    <input asp-for="@Model.Godiste" class="form-control" />
+                    <span asp-validation-for="@Model.Godiste" class="text-danger"></span>
+                </div>
+
+                @*deo za oznake*@
+
+                <div class="form-group">
+                    <label asp-for="@Model.Oznake">Karoserija</label>
+                    <select asp-for="@Model.Oznake[0]" class="form-control">
+                        <option value=""></option>
+                        <option value="limuzina">Limuzina</option>
+                        <option value="kupe">Kupe</option>
+                        <option value="hečbek">Hečbek</option>
+                        <option value="karavan">Karavan</option>
+                        <option value="džip">Džip</option>
+                        <option value="kombi">Kombi</option>
+                        <option value="kamion">Kamion</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Oznake">Gorivo</label>
+                    <select asp-for="@Model.Oznake[1]" class="form-control">
+                        <option value=""></option>
+                        <option value="benzin">Benzin</option>
+                        <option value="dizel">Dizel</option>
+                        <option value="autogas">Autogas</option>
+                        <option value="električni">Električni</option>
+                        <option value="hibrid">Hibrid</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Potvrdi</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
